@@ -19,6 +19,9 @@ class MasterViewController: UICollectionViewController {
   private var snapshot: UIView?
   private var sourceIndexPath: NSIndexPath?
   
+  var realframe = CGRectZero
+    
+  let transition = PopAnimator()
   // MARK: UIViewController
   
   override func viewDidLoad() {
@@ -179,7 +182,7 @@ class MasterViewController: UICollectionViewController {
             let cell: UICollectionViewCell = (self.collectionView?.cellForItemAtIndexPath(indexPath))!
             print(cell.frame)
         
-            let realframe = collectionView.convertRect(cell.frame, toView: collectionView.superview)
+            realframe = collectionView.convertRect(cell.frame, toView: collectionView.superview)
             print ("Real frame:\(realframe)")
             
             
@@ -187,13 +190,15 @@ class MasterViewController: UICollectionViewController {
             
             
             
-            detailsVC.origenFrame = self.view.convertRect(cell.frame, fromView: self.collectionView?.superview)
+            detailsVC.origenFrame =  realframe  // self.view.convertRect(cell.frame, fromView: self.collectionView?.superview)
             detailsVC.origenFrame = CGRect(x:  detailsVC.origenFrame!.origin.x,
                 y: detailsVC.origenFrame!.origin.y+64, width: detailsVC.origenFrame!.width,height: (detailsVC.origenFrame!.height))
             
             
             
+            
             print(detailsVC.origenFrame.debugDescription)
+            
             detailsVC.transitioningDelegate = self
             presentViewController(detailsVC, animated: true, completion: nil)
         }
@@ -227,9 +232,22 @@ extension MasterViewController: UIViewControllerTransitioningDelegate {
     }
     
     
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let animator = PresentAnimator()
-        return animator
+//    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        
+//        return animator
+//    }
+    
+    func animationControllerForPresentedController(
+        presented: UIViewController,
+        presentingController presenting: UIViewController,
+                             sourceController source: UIViewController) ->
+        UIViewControllerAnimatedTransitioning? {
+            
+            transition.originFrame = realframe // selectedImage!.superview!.convertRect(selectedImage!.frame, toView: nil)
+            transition.presenting = true
+            
+            return transition
     }
+
 }
 
