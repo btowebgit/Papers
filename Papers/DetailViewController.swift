@@ -13,7 +13,9 @@ class DetailViewController: UIViewController ,UIViewControllerTransitioningDeleg
   @IBOutlet weak var imageView: UIImageView!
   
     
+  @IBOutlet weak var botonConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var alturaimagen: NSLayoutConstraint!
   @IBOutlet var detailView: UIView!
   var paper: Paper?
   

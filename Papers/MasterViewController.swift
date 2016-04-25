@@ -242,7 +242,7 @@ extension MasterViewController: UIViewControllerTransitioningDelegate {
         presentingController presenting: UIViewController,
                              sourceController source: UIViewController) ->
         UIViewControllerAnimatedTransitioning? {
-            
+    
             transition.originFrame = realframe // selectedImage!.superview!.convertRect(selectedImage!.frame, toView: nil)
             transition.presenting = true
             

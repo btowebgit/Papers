@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -171,14 +173,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lJr-1k-QkJ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lJr-1k-QkJ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="568" id="r5n-XO-heK"/>
+                                </constraints>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="t9t-CA-E9s">
+                                <rect key="frame" x="16" y="284" width="288" height="284"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">El otoño es la temporada en que las hojas caen de los árboles, el clima se hace más moderado y los días y las noches tienen la misma duración.
+El otoño es la estación del año que comienza con el equinoccio de otoño (entre el 20 y el 21 de marzo en el hemisferio sur y entre el 22 y el 23 de septiembre en el hemisferio norte) y que termina con el solsticio de invierno; alrededor del 21 de junio en el hemisferio sur y el 21 de diciembre en el hemisferio norte.
+
+Esta estación tiene una duración promedio de 83 días cortos, 14 horas y 24 minutos, aunque se debe tener  en cuenta que con el calentamiento global ninguna estás épocas es exacta.
+
+En éste período, las hojas verdes de los árboles se vuelven amarillentas y marrones, se secan y caen ayudadas por el viento que sopla con mayor fuerza. La temperatura comienza más fresca.
+
+Las plantas sufren muchos cambios de temperaturas y humedad, estas son dos de las condiciones que más afectan los jardines.
+
+Debido a los cambios radicales de temperaturas y humedad el trabajo en los huertos debe ser meticuloso y cuidadoso.
+
+Tanto en el hemisferio norte como en el sur, el otoño es la estación de las cosechas de maíz y girasol.
+
+Además de los cambios en las plantas, en otoño se debe pensar en consumir alimentos de alta concentración energética: semillas, leguminosas, aguacates, frutos secos y picantes como el ajo, jengibre, clavo, pimienta, para que nos ayuden a conservar el calor interno.
+
+</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="t9t-CA-E9s" firstAttribute="leading" secondItem="9oL-Nz-cYf" secondAttribute="leadingMargin" id="C9d-tF-9oB"/>
                             <constraint firstItem="lJr-1k-QkJ" firstAttribute="leading" secondItem="9oL-Nz-cYf" secondAttribute="leading" id="Fvg-EF-GBq"/>
                             <constraint firstItem="kiT-pp-TpD" firstAttribute="top" secondItem="lJr-1k-QkJ" secondAttribute="bottom" id="LF0-nc-xwZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="t9t-CA-E9s" secondAttribute="trailing" id="f5k-aD-maw"/>
+                            <constraint firstItem="kiT-pp-TpD" firstAttribute="top" secondItem="t9t-CA-E9s" secondAttribute="bottom" id="qcc-t5-Jwr"/>
+                            <constraint firstItem="t9t-CA-E9s" firstAttribute="height" secondItem="9oL-Nz-cYf" secondAttribute="height" multiplier="0.5" id="rP1-3q-aTO"/>
                             <constraint firstItem="lJr-1k-QkJ" firstAttribute="top" secondItem="R0w-Nd-yg6" secondAttribute="bottom" id="u6O-KC-Gkr"/>
                             <constraint firstAttribute="trailing" secondItem="lJr-1k-QkJ" secondAttribute="trailing" id="wJH-OE-Sck"/>
                         </constraints>
@@ -188,6 +219,8 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="alturaimagen" destination="r5n-XO-heK" id="t4r-WO-iya"/>
+                        <outlet property="botonConstraint" destination="LF0-nc-xwZ" id="owH-xl-McZ"/>
                         <outlet property="detailView" destination="9oL-Nz-cYf" id="foM-Gm-p2O"/>
                         <outlet property="imageView" destination="lJr-1k-QkJ" id="mg3-Yu-gVo"/>
                         <outlet property="view" destination="9oL-Nz-cYf" id="aFZ-nY-yXE"/>

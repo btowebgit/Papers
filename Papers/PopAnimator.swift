@@ -24,7 +24,7 @@ import UIKit
 
 class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
-  let duration    = 1.0
+  let duration    = 8.0
   var presenting  = true
   var originFrame = CGRect.zero
   
@@ -36,10 +36,12 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
     let containerView = transitionContext.containerView()!
     let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
-    let herbView = presenting ? toView : transitionContext.viewForKey(UITransitionContextFromViewKey)!
+    let detalle = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! DetailViewController
     
-    let initialFrame = presenting ? originFrame : herbView.frame
-    let finalFrame = presenting ? herbView.frame : originFrame
+    let detailView = presenting ? toView : transitionContext.viewForKey(UITransitionContextFromViewKey)!
+    
+    let initialFrame = presenting ? originFrame : detailView.frame
+    let finalFrame = presenting ? detailView.frame : originFrame
     
     let xScaleFactor = presenting ?
       initialFrame.width / finalFrame.width :
@@ -52,37 +54,50 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     let scaleTransform = CGAffineTransformMakeScale(xScaleFactor, yScaleFactor)
     
     if presenting {
-      herbView.transform = scaleTransform
-      herbView.center = CGPoint(
+      detailView.transform = scaleTransform
+      detailView.center = CGPoint(
         x: CGRectGetMidX(initialFrame),
         y: CGRectGetMidY(initialFrame))
-      herbView.clipsToBounds = true
+      detailView.clipsToBounds = true
     }
     
     containerView.addSubview(toView)
-    containerView.bringSubviewToFront(herbView)
+    containerView.bringSubviewToFront(detailView)
     
-    UIView.animateWithDuration(duration, delay:0.0,
+    UIView.animateWithDuration(duration/2, delay:0.0,
       usingSpringWithDamping: 0.4,
       initialSpringVelocity: 0.0,
       options: [],
       animations: {
-        herbView.transform = self.presenting ?
+        detailView.transform = self.presenting ?
           CGAffineTransformIdentity : scaleTransform
         
-        herbView.center = CGPoint(x: CGRectGetMidX(finalFrame),
+        detailView.center = CGPoint(x: CGRectGetMidX(finalFrame),
           y: CGRectGetMidY(finalFrame))
         
       }, completion:{_ in
-        transitionContext.completeTransition(true)
+       transitionContext.completeTransition(true)
     })
     
-    let round = CABasicAnimation(keyPath: "cornerRadius")
-    round.fromValue = presenting ? 20.0/xScaleFactor : 0.0
-    round.toValue = presenting ? 0.0 : 20.0/xScaleFactor
-    round.duration = duration / 2
-    herbView.layer.addAnimation(round, forKey: nil)
-    herbView.layer.cornerRadius = presenting ? 0.0 : 20.0/xScaleFactor
+    UIView.animateWithDuration(duration/2, delay: duration/2,
+                               usingSpringWithDamping: 0.4,
+                               initialSpringVelocity: 0.0,
+                               options: [],
+                               animations: {
+                    detalle.botonConstraint.constant = 100
+                    detalle.alturaimagen.constant = detalle.alturaimagen.constant - 100
+                    [detalle .updateViewConstraints()]
+                                
+        }, completion:{_ in
+            
+    })
+    
+//    let round = CABasicAnimation(keyPath: "cornerRadius")
+//    round.fromValue = presenting ? 20.0/xScaleFactor : 0.0
+//    round.toValue = presenting ? 0.0 : 20.0/xScaleFactor
+//    round.duration = duration / 2
+//    detailView.layer.addAnimation(round, forKey: nil)
+//    detailView.layer.cornerRadius = presenting ? 0.0 : 20.0/xScaleFactor
   }
   
 }
