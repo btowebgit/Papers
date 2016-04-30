@@ -22,6 +22,7 @@
 		7BD48F041A6D1BE10081BBA1 /* PapersFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BD48F031A6D1BE10081BBA1 /* PapersFlowLayout.swift */; };
 		B950A0551C81E8F700E49B68 /* PresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B950A0541C81E8F700E49B68 /* PresentAnimator.swift */; };
 		B950A0571C81EADC00E49B68 /* DismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B950A0561C81EADC00E49B68 /* DismissAnimator.swift */; };
+		B9D317A31CD524D80041CD54 /* ReversePopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D317A21CD524D80041CD54 /* ReversePopAnimator.swift */; };
 		B9D3B7561CCD8886005231F5 /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D3B7551CCD8886005231F5 /* PopAnimator.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		7BD48F031A6D1BE10081BBA1 /* PapersFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PapersFlowLayout.swift; sourceTree = "<group>"; };
 		B950A0541C81E8F700E49B68 /* PresentAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentAnimator.swift; sourceTree = "<group>"; };
 		B950A0561C81EADC00E49B68 /* DismissAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAnimator.swift; sourceTree = "<group>"; };
+		B9D317A21CD524D80041CD54 /* ReversePopAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReversePopAnimator.swift; sourceTree = "<group>"; };
 		B9D3B7551CCD8886005231F5 /* PopAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +148,7 @@
 				B950A0541C81E8F700E49B68 /* PresentAnimator.swift */,
 				B9D3B7551CCD8886005231F5 /* PopAnimator.swift */,
 				7B10CF911A604F02002E8DF3 /* AppDelegate.swift */,
+				B9D317A21CD524D80041CD54 /* ReversePopAnimator.swift */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				TargetAttributes = {
 					7B10CF8B1A604F02002E8DF3 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 37U4DU69MW;
 					};
 				};
 			};
@@ -252,6 +256,7 @@
 				B950A0551C81E8F700E49B68 /* PresentAnimator.swift in Sources */,
 				7B10CFBE1A605136002E8DF3 /* PapersDataSource.swift in Sources */,
 				7BD48F041A6D1BE10081BBA1 /* PapersFlowLayout.swift in Sources */,
+				B9D317A31CD524D80041CD54 /* ReversePopAnimator.swift in Sources */,
 				B9D3B7561CCD8886005231F5 /* PopAnimator.swift in Sources */,
 				7B10CFC01A605167002E8DF3 /* DetailViewController.swift in Sources */,
 			);
@@ -361,10 +366,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Papers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = ar.bonoxo.sliding;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -372,10 +380,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Papers/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = ar.bonoxo.sliding;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

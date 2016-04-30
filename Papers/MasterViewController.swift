@@ -230,22 +230,13 @@ extension MasterViewController: UIViewControllerTransitioningDelegate {
             return nil
        
     }
-    
-    
-//    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        
-//        return animator
-//    }
-    
     func animationControllerForPresentedController(
         presented: UIViewController,
         presentingController presenting: UIViewController,
                              sourceController source: UIViewController) ->
         UIViewControllerAnimatedTransitioning? {
-    
             transition.originFrame = realframe // selectedImage!.superview!.convertRect(selectedImage!.frame, toView: nil)
             transition.presenting = true
-            
             return transition
     }
 

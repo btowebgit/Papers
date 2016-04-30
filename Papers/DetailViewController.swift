@@ -8,18 +8,14 @@
 
 import UIKit
 
-class DetailViewController: UIViewController ,UIViewControllerTransitioningDelegate{
+
+class DetailViewController: UIViewController {
   
   @IBOutlet weak var imageView: UIImageView!
-  
-    
-  @IBOutlet weak var botonConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var alturaimagen: NSLayoutConstraint!
   @IBOutlet var detailView: UIView!
   var paper: Paper?
-  
   var origenFrame :CGRect?
+  let transition = ReversePopAnimator()
     
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
@@ -31,14 +27,55 @@ class DetailViewController: UIViewController ,UIViewControllerTransitioningDeleg
 
     }
   }
+    override func prefersStatusBarHidden() -> Bool {
+        return true;
+    }
     
     func actionClose(tap: UITapGestureRecognizer) {
-        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+       
+        if let masterVC = storyboard!.instantiateViewControllerWithIdentifier("MasterViewController") as? MasterViewController {
+            
+            
+            
+            print(MasterViewController)
+            
+            masterVC.transitioningDelegate = self
+            
+            presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+
+        
+        
+       
     }
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+//    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+//        return .LightContent
+//    }
+
+}
+
+extension DetailViewController: UIViewControllerTransitioningDelegate {
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        transition.originFrame = origenFrame!
+        transition.presenting = false
+        return transition
+        
+        
+        
+    }
+    func animationControllerForPresentedController(
+        presented: UIViewController,
+        presentingController presenting: UIViewController,
+                             sourceController source: UIViewController) ->
+        UIViewControllerAnimatedTransitioning? {
+            transition.originFrame = origenFrame!
+            transition.presenting = true
+            return transition
     }
     
-  
-  
 }
+
+
+

@@ -24,7 +24,7 @@ import UIKit
 
 class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
-  let duration    = 8.0
+  let duration    = 1.0
   var presenting  = true
   var originFrame = CGRect.zero
   
@@ -36,7 +36,7 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
     let containerView = transitionContext.containerView()!
     let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
-    let detalle = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! DetailViewController
+    //let detalle = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! DetailViewController
     
     let detailView = presenting ? toView : transitionContext.viewForKey(UITransitionContextFromViewKey)!
     
@@ -79,18 +79,6 @@ class PopAnimator: NSObject, UIViewControllerAnimatedTransitioning {
        transitionContext.completeTransition(true)
     })
     
-    UIView.animateWithDuration(duration/2, delay: duration/2,
-                               usingSpringWithDamping: 0.4,
-                               initialSpringVelocity: 0.0,
-                               options: [],
-                               animations: {
-                    detalle.botonConstraint.constant = 100
-                    detalle.alturaimagen.constant = detalle.alturaimagen.constant - 100
-                    [detalle .updateViewConstraints()]
-                                
-        }, completion:{_ in
-            
-    })
     
 //    let round = CABasicAnimation(keyPath: "cornerRadius")
 //    round.fromValue = presenting ? 20.0/xScaleFactor : 0.0
